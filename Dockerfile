@@ -54,14 +54,14 @@ RUN pip install --no-cache-dir --force-reinstall \
 COPY handler.py /app/handler.py
 COPY characters.json /app/characters.json
 
-# Variáveis de ambiente
+# Variáveis de ambiente - usar Network Volume para cache persistente
 ENV PYTHONUNBUFFERED=1
-ENV HF_HOME=/tmp/hf
-ENV TRANSFORMERS_CACHE=/tmp/hf
-ENV HUGGINGFACE_HUB_CACHE=/tmp/hf
+ENV HF_HOME=/runpod-volume/huggingface
+ENV TRANSFORMERS_CACHE=/runpod-volume/huggingface
+ENV HUGGINGFACE_HUB_CACHE=/runpod-volume/huggingface
 
-# Usar modelo SD 1.5 (menor, ~4GB vs ~15GB do SDXL)
-ENV MODEL_ID=runwayml/stable-diffusion-v1-5
+# Usar SDXL (RealVisXL) - modelo fica no Network Volume
+ENV MODEL_ID=SG161222/RealVisXL_V4.0
 
 # Comando de execução
 CMD ["python", "-u", "/app/handler.py"]
