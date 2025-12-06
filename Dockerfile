@@ -22,13 +22,15 @@ RUN pip install --no-cache-dir \
     numpy \
     scipy
 
+# Atualizar huggingface_hub PRIMEIRO (fix para split_torch_state_dict_into_shards)
+RUN pip install --no-cache-dir --upgrade huggingface_hub>=0.24.0
+
 # Instalar PyTorch e dependências de ML
 RUN pip install --no-cache-dir \
-    diffusers>=0.25.0 \
-    transformers>=4.36.0 \
-    accelerate>=0.25.0 \
-    safetensors \
-    huggingface_hub
+    diffusers>=0.30.0 \
+    transformers>=4.44.0 \
+    accelerate>=0.30.0 \
+    safetensors
 
 # Instalar dependências para PhotoMaker/StoryDiffusion
 RUN pip install --no-cache-dir \
