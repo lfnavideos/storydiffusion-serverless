@@ -58,10 +58,12 @@ COPY characters.json /app/characters.json
 # Descomentando baixa ~15GB de modelos
 # RUN python -c "from diffusers import StableDiffusionXLPipeline; StableDiffusionXLPipeline.from_pretrained('stabilityai/stable-diffusion-xl-base-1.0', torch_dtype=torch.float16)"
 
-# Variáveis de ambiente
+# Variáveis de ambiente - usar /runpod-volume para cache (mais espaço)
 ENV PYTHONUNBUFFERED=1
-ENV HF_HOME=/app/huggingface
-ENV TRANSFORMERS_CACHE=/app/huggingface
+ENV HF_HOME=/runpod-volume/huggingface
+ENV TRANSFORMERS_CACHE=/runpod-volume/huggingface
+ENV HUGGINGFACE_HUB_CACHE=/runpod-volume/huggingface
+ENV TORCH_HOME=/runpod-volume/torch
 
 # Comando de execução
 CMD ["python", "-u", "/app/handler.py"]
