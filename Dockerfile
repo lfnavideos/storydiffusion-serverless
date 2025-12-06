@@ -49,7 +49,7 @@ RUN pip install --no-cache-dir --force-reinstall \
     huggingface_hub==0.25.2 \
     transformers==4.46.0 \
     diffusers==0.31.0 \
-    numpy<2.0
+    "numpy<2.0"
 
 # Copiar handler customizado
 COPY handler.py /app/handler.py
