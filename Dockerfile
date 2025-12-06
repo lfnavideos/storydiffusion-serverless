@@ -44,6 +44,12 @@ RUN git clone https://github.com/HVision-NKU/StoryDiffusion.git /app/StoryDiffus
 # Instalar dependências do StoryDiffusion
 RUN pip install --no-cache-dir -r /app/StoryDiffusion/requirements.txt || true
 
+# FORÇAR versões corretas DEPOIS de tudo (fix para split_torch_state_dict_into_shards)
+RUN pip install --no-cache-dir --force-reinstall \
+    huggingface_hub==0.25.2 \
+    transformers==4.46.0 \
+    diffusers==0.31.0
+
 # Copiar handler customizado
 COPY handler.py /app/handler.py
 COPY characters.json /app/characters.json
