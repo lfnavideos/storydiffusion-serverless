@@ -54,14 +54,14 @@ RUN pip install --no-cache-dir --force-reinstall \
 COPY handler.py /app/handler.py
 COPY characters.json /app/characters.json
 
-# Variáveis de ambiente - definir ANTES de baixar modelos
+# Variáveis de ambiente
 ENV PYTHONUNBUFFERED=1
-ENV HF_HOME=/app/models
-ENV TRANSFORMERS_CACHE=/app/models
-ENV HUGGINGFACE_HUB_CACHE=/app/models
+ENV HF_HOME=/tmp/hf
+ENV TRANSFORMERS_CACHE=/tmp/hf
+ENV HUGGINGFACE_HUB_CACHE=/tmp/hf
 
-# Pré-baixar modelo na imagem (evita erro de disco em runtime)
-RUN mkdir -p /app/models && python -c "from diffusers import StableDiffusionXLPipeline; import torch; StableDiffusionXLPipeline.from_pretrained('SG161222/RealVisXL_V4.0', torch_dtype=torch.float16, use_safetensors=True, variant='fp16', cache_dir='/app/models')"
+# Usar modelo SD 1.5 (menor, ~4GB vs ~15GB do SDXL)
+ENV MODEL_ID=runwayml/stable-diffusion-v1-5
 
 # Comando de execução
 CMD ["python", "-u", "/app/handler.py"]

@@ -54,18 +54,25 @@ def get_pipeline():
     """Carrega o pipeline StoryDiffusion (singleton pattern)"""
     global PIPELINE
     if PIPELINE is None:
-        print("🔄 Carregando pipeline StoryDiffusion...")
+        print("🔄 Carregando pipeline...")
 
-        from diffusers import StableDiffusionXLPipeline, DDIMScheduler
+        model_id = os.environ.get("MODEL_ID", "runwayml/stable-diffusion-v1-5")
 
-        # Usar modelo SDXL otimizado para personagens
-        model_id = os.environ.get("MODEL_ID", "SG161222/RealVisXL_V4.0")
+        # Detectar se é SDXL ou SD 1.5
+        if "xl" in model_id.lower() or "sdxl" in model_id.lower():
+            from diffusers import StableDiffusionXLPipeline as Pipeline
+            extra_args = {"variant": "fp16"}
+        else:
+            from diffusers import StableDiffusionPipeline as Pipeline
+            extra_args = {}
 
-        PIPELINE = StableDiffusionXLPipeline.from_pretrained(
+        from diffusers import DDIMScheduler
+
+        PIPELINE = Pipeline.from_pretrained(
             model_id,
             torch_dtype=torch.float16,
             use_safetensors=True,
-            variant="fp16"
+            **extra_args
         )
 
         # Scheduler otimizado
@@ -75,7 +82,6 @@ def get_pipeline():
         PIPELINE = PIPELINE.to("cuda")
 
         # Otimizações de memória
-        PIPELINE.enable_model_cpu_offload()
         PIPELINE.enable_vae_slicing()
 
         print(f"✅ Pipeline carregado: {model_id}")
