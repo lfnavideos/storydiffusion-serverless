@@ -1,0 +1,59 @@
+# StoryDiffusion - RunPod Serverless
+# Template customizado para "A Bíblia em Vídeos"
+# Consistência de personagens bíblicos através de múltiplas cenas
+
+FROM runpod/pytorch:2.2.0-py3.10-cuda12.1.1-devel-ubuntu22.04
+
+WORKDIR /app
+
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y \
+    git \
+    wget \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalar dependências Python base
+RUN pip install --no-cache-dir \
+    runpod \
+    requests \
+    pillow \
+    numpy \
+    scipy
+
+# Instalar PyTorch e dependências de ML
+RUN pip install --no-cache-dir \
+    diffusers>=0.25.0 \
+    transformers>=4.36.0 \
+    accelerate>=0.25.0 \
+    safetensors \
+    huggingface_hub
+
+# Instalar dependências para PhotoMaker/StoryDiffusion
+RUN pip install --no-cache-dir \
+    insightface \
+    onnxruntime-gpu \
+    opencv-python-headless
+
+# Clonar StoryDiffusion
+RUN git clone https://github.com/HVision-NKU/StoryDiffusion.git /app/StoryDiffusion
+
+# Instalar dependências do StoryDiffusion
+RUN pip install --no-cache-dir -r /app/StoryDiffusion/requirements.txt || true
+
+# Copiar handler customizado
+COPY handler.py /app/handler.py
+COPY characters.json /app/characters.json
+
+# Pré-baixar modelos base (opcional - aumenta tamanho mas acelera cold start)
+# Descomentando baixa ~15GB de modelos
+# RUN python -c "from diffusers import StableDiffusionXLPipeline; StableDiffusionXLPipeline.from_pretrained('stabilityai/stable-diffusion-xl-base-1.0', torch_dtype=torch.float16)"
+
+# Variáveis de ambiente
+ENV PYTHONUNBUFFERED=1
+ENV HF_HOME=/app/huggingface
+ENV TRANSFORMERS_CACHE=/app/huggingface
+
+# Comando de execução
+CMD ["python", "-u", "/app/handler.py"]

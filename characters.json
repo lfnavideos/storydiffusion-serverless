@@ -1,0 +1,159 @@
+{
+  "description": "Personagens bíblicos com características visuais definidas para consistência",
+  "version": "1.0",
+  "characters": {
+    "abraham": {
+      "name": "Abraão",
+      "name_en": "Abraham",
+      "base_prompt": "elderly man Abraham, white long flowing beard, weathered tan skin, deep wise eyes, middle eastern features, ancient hebrew patriarch",
+      "clothing": "traditional ancient hebrew robes, earth tones, woolen cloak",
+      "age": "elderly, 75-100 years",
+      "distinctive_features": "long white beard, kind eyes, sun-weathered face"
+    },
+    "moses": {
+      "name": "Moisés",
+      "name_en": "Moses",
+      "base_prompt": "prophet Moses, gray beard, strong determined face, middle eastern man, hebrew leader",
+      "clothing": "simple hebrew robes, wooden staff, desert attire",
+      "age": "mature, 80 years",
+      "distinctive_features": "gray beard, intense eyes, carries wooden staff"
+    },
+    "david": {
+      "name": "Davi",
+      "name_en": "David",
+      "base_prompt": "young David, brown curly hair, handsome youthful face, shepherd boy, israelite youth",
+      "clothing": "simple shepherd garments, leather sling",
+      "age": "young, 15-17 years",
+      "distinctive_features": "curly brown hair, youthful face, athletic build"
+    },
+    "david_king": {
+      "name": "Davi Rei",
+      "name_en": "King David",
+      "base_prompt": "King David, brown hair with gray streaks, royal bearing, handsome mature face, israelite king",
+      "clothing": "royal hebrew robes, golden crown, regal attire",
+      "age": "mature, 40-50 years",
+      "distinctive_features": "brown hair graying, royal crown, commanding presence"
+    },
+    "jesus": {
+      "name": "Jesus",
+      "name_en": "Jesus Christ",
+      "base_prompt": "Jesus Christ, brown long hair, trimmed beard, gentle compassionate eyes, middle eastern jewish man, serene expression",
+      "clothing": "simple white and blue robes, sandals",
+      "age": "young adult, 30-33 years",
+      "distinctive_features": "long brown hair, gentle eyes, serene peaceful expression"
+    },
+    "mary": {
+      "name": "Maria",
+      "name_en": "Virgin Mary",
+      "base_prompt": "Virgin Mary, young beautiful woman, middle eastern features, gentle loving expression, modest humble appearance",
+      "clothing": "blue and white robes, head covering veil",
+      "age": "young, 14-30 years depending on scene",
+      "distinctive_features": "gentle maternal expression, head covered, modest beauty"
+    },
+    "joseph": {
+      "name": "José",
+      "name_en": "Joseph",
+      "base_prompt": "Joseph of Nazareth, strong working man, brown beard, kind protective expression, middle eastern carpenter",
+      "clothing": "simple working clothes, carpenter attire",
+      "age": "mature, 30-40 years",
+      "distinctive_features": "brown beard, strong hands, protective demeanor"
+    },
+    "peter": {
+      "name": "Pedro",
+      "name_en": "Peter",
+      "base_prompt": "apostle Peter, sturdy fisherman, gray curly hair, weathered face, passionate expression, galilean man",
+      "clothing": "simple fisherman garments, rough fabric",
+      "age": "mature, 40-50 years",
+      "distinctive_features": "curly gray hair, weathered skin, passionate eyes"
+    },
+    "paul": {
+      "name": "Paulo",
+      "name_en": "Paul",
+      "base_prompt": "apostle Paul, bald head, dark beard, intense scholarly eyes, roman citizen, jewish pharisee background",
+      "clothing": "roman era robes, traveler attire",
+      "age": "mature, 40-60 years",
+      "distinctive_features": "bald head, dark beard, intense intellectual gaze"
+    },
+    "noah": {
+      "name": "Noé",
+      "name_en": "Noah",
+      "base_prompt": "patriarch Noah, very elderly man, long white beard, righteous patient expression, ancient hebrew",
+      "clothing": "ancient simple robes, working clothes for ark building",
+      "age": "very elderly, 500-600 years",
+      "distinctive_features": "extremely long white beard, patient wise eyes"
+    },
+    "daniel": {
+      "name": "Daniel",
+      "name_en": "Daniel",
+      "base_prompt": "prophet Daniel, handsome young hebrew man, noble bearing, wise beyond years, court official appearance",
+      "clothing": "babylonian court attire mixed with hebrew modesty",
+      "age": "young to mature, 15-80 years depending on scene",
+      "distinctive_features": "noble bearing, wise eyes, dignified posture"
+    },
+    "adam": {
+      "name": "Adão",
+      "name_en": "Adam",
+      "base_prompt": "first man Adam, perfect handsome man, athletic build, innocent pure expression, no beard initially",
+      "clothing": "fig leaves, simple natural covering",
+      "age": "young adult, perfect form",
+      "distinctive_features": "perfect human form, innocent expression"
+    },
+    "eve": {
+      "name": "Eva",
+      "name_en": "Eve",
+      "base_prompt": "first woman Eve, beautiful woman, long flowing hair, innocent pure expression, perfect feminine form",
+      "clothing": "fig leaves, natural covering, long hair",
+      "age": "young adult, perfect form",
+      "distinctive_features": "long flowing hair, innocent beauty"
+    },
+    "solomon": {
+      "name": "Salomão",
+      "name_en": "Solomon",
+      "base_prompt": "King Solomon, regal handsome man, wise expression, wealthy appearance, israelite king",
+      "clothing": "extremely rich royal robes, golden crown, jewels",
+      "age": "mature, 30-50 years",
+      "distinctive_features": "wise eyes, wealthy appearance, royal bearing"
+    },
+    "elijah": {
+      "name": "Elias",
+      "name_en": "Elijah",
+      "base_prompt": "prophet Elijah, wild appearance, long dark hair, intense prophetic eyes, fiery personality",
+      "clothing": "rough animal skin garment, leather belt, desert prophet attire",
+      "age": "mature, 40-60 years",
+      "distinctive_features": "wild hair, intense fiery eyes, rough appearance"
+    },
+    "john_baptist": {
+      "name": "João Batista",
+      "name_en": "John the Baptist",
+      "base_prompt": "John the Baptist, wild desert prophet, long dark hair, intense eyes, ascetic appearance",
+      "clothing": "camel hair garment, leather belt, barefoot",
+      "age": "young adult, 30 years",
+      "distinctive_features": "wild hair, thin ascetic body, intense prophetic gaze"
+    },
+    "goliath": {
+      "name": "Golias",
+      "name_en": "Goliath",
+      "base_prompt": "giant warrior Goliath, massive muscular man, intimidating fierce expression, philistine warrior",
+      "clothing": "heavy bronze armor, helmet, massive spear and shield",
+      "age": "mature warrior",
+      "distinctive_features": "enormous size, fierce expression, heavy armor"
+    },
+    "samson": {
+      "name": "Sansão",
+      "name_en": "Samson",
+      "base_prompt": "mighty Samson, extremely muscular man, long flowing hair, powerful physique, israelite judge",
+      "clothing": "simple israelite garments, minimal clothing to show strength",
+      "age": "young adult, peak physical condition",
+      "distinctive_features": "extremely long hair, massive muscles, powerful build"
+    }
+  },
+  "style_modifiers": {
+    "photorealistic": "photorealistic, 8k, cinematic lighting, detailed skin texture",
+    "artistic": "oil painting style, classical religious art, rembrandt lighting",
+    "epic": "epic biblical scene, dramatic lighting, volumetric fog, golden hour"
+  },
+  "negative_prompts": {
+    "default": "cartoon, anime, modern clothing, glasses, wristwatch, tattoos, piercings, bad anatomy, deformed, ugly, blurry",
+    "strict": "cartoon, anime, modern clothing, glasses, wristwatch, tattoos, piercings, bad anatomy, deformed, ugly, blurry, text, watermark, signature, extra limbs, missing limbs, disfigured"
+  }
+}
