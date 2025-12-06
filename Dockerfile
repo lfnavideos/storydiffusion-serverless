@@ -54,16 +54,14 @@ RUN pip install --no-cache-dir --force-reinstall \
 COPY handler.py /app/handler.py
 COPY characters.json /app/characters.json
 
-# Pré-baixar modelos base (opcional - aumenta tamanho mas acelera cold start)
-# Descomentando baixa ~15GB de modelos
-# RUN python -c "from diffusers import StableDiffusionXLPipeline; StableDiffusionXLPipeline.from_pretrained('stabilityai/stable-diffusion-xl-base-1.0', torch_dtype=torch.float16)"
-
-# Variáveis de ambiente - usar /runpod-volume para cache (mais espaço)
+# Variáveis de ambiente - definir ANTES de baixar modelos
 ENV PYTHONUNBUFFERED=1
-ENV HF_HOME=/runpod-volume/huggingface
-ENV TRANSFORMERS_CACHE=/runpod-volume/huggingface
-ENV HUGGINGFACE_HUB_CACHE=/runpod-volume/huggingface
-ENV TORCH_HOME=/runpod-volume/torch
+ENV HF_HOME=/app/models
+ENV TRANSFORMERS_CACHE=/app/models
+ENV HUGGINGFACE_HUB_CACHE=/app/models
+
+# Pré-baixar modelo na imagem (evita erro de disco em runtime)
+RUN mkdir -p /app/models && python -c "from diffusers import StableDiffusionXLPipeline; import torch; StableDiffusionXLPipeline.from_pretrained('SG161222/RealVisXL_V4.0', torch_dtype=torch.float16, use_safetensors=True, variant='fp16', cache_dir='/app/models')"
 
 # Comando de execução
 CMD ["python", "-u", "/app/handler.py"]
